@@ -1,8 +1,17 @@
+import React, { useState, useRef } from 'react';
 import MiniGrid from './MiniGrid';
 import './style.css';
 
 
 function App() {
+
+  const [game, setGame] = useState({
+    boards: Array(9).fill({
+      squares: Array(9).fill(null)
+    }),
+    playerX: true
+  });
+
   return (
     <>
       <div id='heading'>

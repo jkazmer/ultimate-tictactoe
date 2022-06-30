@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&family=Fraunces:opsz,wght@9..144,500&family=Rubik:ital,wght@0,700;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,700;1,300&display=swap');
 
 *,
 *::before,
@@ -32,11 +32,12 @@ body {
     grid-gap: 3px;
 }
 
-.mini-grid button {
+.square {
     margin: 0;
     cursor: pointer;
     background-color: white;
-    font-size: .75rem;
+    font-size: 2.25rem;
+    font-family: 'Rubik', sans-serif;
     outline: none;
     width: 2.8rem;
     height: 2.8rem;
