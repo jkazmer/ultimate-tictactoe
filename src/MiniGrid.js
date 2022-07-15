@@ -1,61 +1,18 @@
-import React, { useState, useReducer } from 'react';
+import React from 'react';
 import Square from './Square';
 
 
 export default function MiniGrid(props) {
 
-    const [game, setGame] = useState({
-        squares: Array(9).fill(null),
-        playerX: true,
-        winner: null
-    });
 
-    function checkWinner(squares) {
-        const winConfigs = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-        ];
-
-        for (let i = 0; i < winConfigs.length; i++) {
-            const [a, b, c] = winConfigs[i];
-            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                return squares[a];
-            }
-        }
-
-        return null;
-    }
-
-    function clickHandler(i) {
-        const newSquares = game.squares.slice();
-        if (newSquares[i]) {
-            return;
-        }
-        newSquares[i] = game.playerX ? 'X' : 'O';
-        const winner = checkWinner(newSquares);
-        setGame({
-            squares: newSquares,
-            playerX: !game.playerX,
-            winner: winner
-        });
-    }
-
-    function createSquare(i) {
-        return <Square value={game.squares[i]} onClick={() => clickHandler(i)} />
-    }
-
-    function renderBoard() {
-        const winner = checkWinner(game.squares);
+    function createSquare(j) {
+        const disabled = props.winner ? true : false;
+        const square = <Square value={props.squares[j]} disabled={disabled} onClick={() => props.onClick(props.index, j)} />;
+        return square;
     }
 
     return (
-        <div className='mini-grid'>
+        <div className={`mini-grid ${props.active ? 'active' : ''}`}>
             {createSquare(0)}
             {createSquare(1)}
             {createSquare(2)}
